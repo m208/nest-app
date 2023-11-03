@@ -7,5 +7,6 @@ import { ReqController } from './req.controller';
   imports: [HttpModule],
   providers: [ReqService],
   controllers: [ReqController],
+  exports: [ReqService],
 })
 export class ReqModule {}

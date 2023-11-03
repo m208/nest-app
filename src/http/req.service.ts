@@ -60,4 +60,25 @@ export class ReqService {
     );
     return data.days[0].description;
   }
+
+  async sendMsg() {
+    const forecast = await this.getWeather({
+      location: 'Saint-Petersburg',
+      key: process.env.WEATHER_API_KEY,
+    });
+    const message = `Im still alive!\n Now ${new Date().toLocaleTimeString()}\n Weather forecast for the next hour: ${forecast}`;
+    const { data } = await firstValueFrom(
+      this.httpService
+        .get<ReqExample>(
+          `https://api.telegram.org/bot${process.env.TG_BOT_TOKEN}/sendMessage?chat_id=${process.env.TG_USER_ID}&text=${message}`,
+        )
+        .pipe(
+          catchError((error: AxiosError) => {
+            this.logger.error(error.response.data);
+            throw 'An error happened!';
+          }),
+        ),
+    );
+    return data;
+  }
 }

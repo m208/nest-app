@@ -1,5 +1,4 @@
 export class GetWeatherDto {
-  readonly title: string;
-  readonly body: string;
-  readonly userId: number;
+  readonly location: string;
+  readonly key: string;
 }
