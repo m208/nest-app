@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
-import { ReqService } from 'src/http/req.service';
+import { ReqService } from '@/http/req.service';
 
 @Injectable()
 export class SchedulerService {

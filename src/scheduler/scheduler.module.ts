@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SchedulerService } from './scheduler.service';
-import { ReqModule } from 'src/http/req.module';
+import { ReqModule } from '@/http/req.module';
 
 @Module({
   imports: [ReqModule],
